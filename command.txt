@@ -1,0 +1,19 @@
+docker rmi fire_smoke_detection:V2
+
+docker rm test1
+
+sudo docker build -t fire_smoke_detection:V1 .
+
+docker run -it --gpus all --name test1 fire_smoke_detection:V1 bash
+
+python infer.py -v "" -w ""
+
+/media/externalhdd/02/Rupesh_02_Backup_Data/Ease_My_AI/Yolo_V8_Models/Fire_Smoke_Detection_V2
+
+root@30ab56547e10:/workspace/Fire_Smoke_Detection_V2# python infer.py -v "/workspace/Fire_Smoke_Detection_V2/Test_images_&_Videos/Raging Wildfires Burn Across Canada Sending Smoke Down to the US.mp4" -w "/workspace/Fire_Smoke_Detection_V2/runs/detect/train4/weights/best_fp16.engine"
+Ultralytics YOLOv8.1.15 🚀 Python-3.10.13 torch-2.1.0 CUDA:0 (NVIDIA TITAN RTX, 24210MiB)
+Setup complete ✅ (8 CPUs, 31.3 GB RAM, 1640.2/1847.3 GB disk)
+Loading /workspace/Fire_Smoke_Detection_V2/runs/detect/train4/weights/best_fp16.engine for TensorRT inference...
+[03/28/2024-10:31:55] [TRT] [I] Loaded engine size: 51 MiB
+[03/28/2024-10:31:55] [TRT] [I] [MemUsageChange] TensorRT-managed allocation in engine deserialization: CPU +0, GPU +52, now: CPU 0, GPU 52 (MiB)
+[03/28/2024-10:31:55] [TRT] [I] [MemUsageChange] TensorRT-managed allocation in IExecutionContext creation: CPU +0, GPU +60, now: CPU 0, GPU 112 (MiB)
